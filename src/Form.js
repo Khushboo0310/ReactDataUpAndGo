@@ -25,8 +25,8 @@ class QueryForm extends React.Component{
             .then(res => res.json())
             .then(
                 (result) => {
-                    //this.setState({ data: result });
-                    console.log(">>>>>>Result"+result);
+                    this.setState({ data: result["items"] });
+                    console.log(">>>>>>Result"+JSON.stringify(result["items"]));
                 },
                 (error) => {
                     console.log(this.props.url, error.toString());
@@ -36,8 +36,14 @@ class QueryForm extends React.Component{
     
     componentDidMount = function () {
         this.loadDataFromServer();
-        setInterval(this.loadDataFromServer, this.props.pollInterval);
+        
+        //setInterval(this.loadDataFromServer, this.props.pollInterval);
     }
+
+    componentDidUpdate = function(){
+        console.log("DATA : " + this.state.data[0]["id"]);
+    }
+
     render = function(){
         return(
             <div>
