@@ -6,30 +6,36 @@ class QueryForm extends React.Component{
         this.state = {
             data: []
         }
+        this.loadDataFromServer = this.loadDataFromServer.bind(this);
     }
 
     getInitialState = function () {
         //this will hold all the data being read and posted to the file
         return { data: [] };
     }
-    /*
+    
     loadDataFromServer = function(){
 
-        fetch(this.props.url)
+        fetch(this.props.url, {
+            method : 'GET',
+            headers: {
+                'content-type' : 'application/json'
+            }
+        })
             .then(res => res.json())
             .then(
                 (result) => {
-                    this.setState({ data: result });
-                    console.log(result);
+                    //this.setState({ data: result });
+                    console.log(">>>>>>Result"+result);
                 },
                 (error) => {
                     console.log(this.props.url, error.toString());
                 }
             )
     }
-    */
+    
     componentDidMount = function () {
-        //this.loadDataFromServer();
+        this.loadDataFromServer();
         setInterval(this.loadDataFromServer, this.props.pollInterval);
     }
     render = function(){
