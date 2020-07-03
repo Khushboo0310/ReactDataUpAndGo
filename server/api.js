@@ -27,9 +27,22 @@ app.listen(app.get('port'), function () {
 
 app.get('/api/data', function (req, res) {
     res.send(JSON.stringify({
-        "items": [
-            { "id": 1, "name": "Apples", "price": "$2" },
-            { "id": 2, "name": "Peaches", "price": "$5" }
+        "students": [
+            {
+                "id": 1,
+                "name": "Khushboo Bhasne",
+                "email": "khushboobhasne@gmail.com"
+            },
+            {
+                "id": 2,
+                "name": "Prateeksha Dixit",
+                "email": "pdixit2094@gmail.com"
+            },
+            {
+                "id": 3,
+                "name": "Sudeepta Nath",
+                "email": "sudinath@gmail.com"
+            }
         ]
     }));
 });

@@ -1,4 +1,6 @@
 import React from 'react';
+import ListEmployee from './ListEmp';
+
 
 class QueryForm extends React.Component{
     constructor(props){
@@ -25,8 +27,8 @@ class QueryForm extends React.Component{
             .then(res => res.json())
             .then(
                 (result) => {
-                    this.setState({ data: result["items"] });
-                    console.log(">>>>>>Result"+JSON.stringify(result["items"]));
+                    this.setState({ data: result["students"] });
+                    console.log(">>>>>>Result" + JSON.stringify(result["students"]));
                 },
                 (error) => {
                     console.log(this.props.url, error.toString());
@@ -47,7 +49,8 @@ class QueryForm extends React.Component{
     render = function(){
         return(
             <div>
-                <h3>Form will be placed here!!!</h3>
+                <h3>List of employees</h3>
+                <ListEmployee data={this.state.data} />
             </div>
         );
     }
