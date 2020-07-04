@@ -38,13 +38,13 @@ class DisplayForm extends React.Component{
                 <br></br>
                 <h4>Enter your Details Here!</h4>
                 <form class="employee-form">
-                    <label for="name">Name : </label>
-                    <input type="text" name="name" id="name" placeholder="Enter your Name" value={this.state.name} onChange={e => this.handleChange(e)} />
-                    <br></br>
-                    <label for="email">Email : </label>
-                    <input type="text" name="email" id="email" placeholder="Enter your Email" value={this.state.email} onChange={e => this.handleChange(e)} />
-                    <br></br>
-                    <input type="submit" value="Submit" onClick={(e) => this.onSubmit(e)} />
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" value={this.state.name} onChange={e => this.handleChange(e)} />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" value={this.state.email} onChange={e => this.handleChange(e)} />
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Submit" onClick={(e) => this.onSubmit(e)} />
                 </form>
             </div>
         );

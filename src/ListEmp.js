@@ -45,12 +45,12 @@ class Employee extends React.Component{
 
         return(
             <div>
-                <table>
-                    <thead>
+                <table class="table table-striped table-dark table-bordered table-hover">
+                    <thead class="thead-dark">
                         <tr>
-                            <td>ID</td>
-                            <td>NAME</td>
-                            <td>EMAIL</td>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
                         </tr> 
                     </thead>
                     <tbody>{this.getRowsData()}</tbody>
