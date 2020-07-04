@@ -1,5 +1,6 @@
 import React from 'react';
 import ListEmployee from './ListEmp';
+import DisplayForm from './CreateForm';
 
 
 class QueryForm extends React.Component{
@@ -35,15 +36,23 @@ class QueryForm extends React.Component{
                 }
             )
     }
+
+    handleFormPost = function(newData){
+        //alert("Form Posting" + newData);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: newData.name , email : newData.email })
+        };
+        fetch('http://localhost:9876/api/data', requestOptions)
+            .then(response => response.json())
+            .then(data=>console.log(data));
+            
+    }
     
     componentDidMount = function () {
         this.loadDataFromServer();
-        
         //setInterval(this.loadDataFromServer, this.props.pollInterval);
-    }
-
-    componentDidUpdate = function(){
-        console.log("DATA : " + this.state.data[0]["id"]);
     }
 
     render = function(){
@@ -51,6 +60,7 @@ class QueryForm extends React.Component{
             <div>
                 <h3>List of employees</h3>
                 <ListEmployee data={this.state.data} />
+                <DisplayForm onFormSubmit={this.handleFormPost}/>
             </div>
         );
     }
